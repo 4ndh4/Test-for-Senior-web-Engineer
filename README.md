@@ -1,6 +1,8 @@
 Task 2
 ============================
 
+Please read task 2.txt for all suggestions/corrections.
+
 Task 2:
 
 Assumptions:
