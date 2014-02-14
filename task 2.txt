@@ -1,0 +1,131 @@
+1. there is an error when import and execute script data.sql
+
+Query:
+CREATE TABLE HDB (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    PID BIGINT NOT NULL,
+    HDBBlock INT NOT NULL,
+    INDEX idx_PID (PID), 
+    FOREIGN KEY (PID) REFERENCES Property(ID)
+) ENGINE=InnoDB
+
+Error occured at:2014-02-14 22:48:11
+Line no.:18
+Error Code: 1005 - Can't create table 'rumahdotcom.hdb' (errno: 150)
+
+correction: change ENGINE "InnoDB" to "MyISAM" on data.sql 
+
+
+
+2. there is an error when import and execute script data.sql
+
+Query:
+CREATE TABLE Condo (
+    ID BIGINT AUTO_INCREMENT,
+    PID INT NOT NULL,
+    SwimmingPool TINYINT default 0,
+    INDEX idx_PID (PID), 
+    FOREIGN KEY (PID) REFERENCES Property(ID)
+) ENGINE=InnoDB
+
+Error occured at:2014-02-14 22:54:34
+Line no.:26
+Error Code: 1075 - Incorrect table definition; there can be only one auto column and it must be defined as a key
+
+correction: change ENGINE "InnoDB" to "MyISAM" on data.sql 
+
+
+3. there is an error when import and execute script data.sql
+
+Query:
+CREATE TABLE Condo (
+    ID BIGINT AUTO_INCREMENT,
+    PID INT NOT NULL,
+    SwimmingPool TINYINT default 0,
+    INDEX idx_PID (PID), 
+    FOREIGN KEY (PID) REFERENCES Property(ID)
+) ENGINE=MyISAM
+
+Error occured at:2014-02-14 22:57:26
+Line no.:26
+Error Code: 1075 - Incorrect table definition; there can be only one auto column and it must be defined as a key
+
+correction: change "ID BIGINT AUTO_INCREMENT" to "ID BIGINT AUTO_INCREMENT PRIMARY KEY" on data.sql 
+
+
+4. SyntaxError on test.html (line 7,col4): missing before statement: Get the data using ajax.
+
+Correction: Change line 6-8 
+<!--//
+Get the data using ajax
+//--> 
+into 
+<!--//Get the data using ajax//-->
+
+
+5.there is an error 404 Not Found when execute ajax request on test.html line 8
+
+Correction: Change line 8
+/getinfo/111
+into 
+getinfo.php/111
+
+
+6. Parse error: syntax error, unexpected ')' in getinfo.php on line 4
+
+Correction: Change line 4
+$ArrayURL = split('/', $_SERVER[REQUEST_URI]));
+into 
+$ArrayURL = split('/', $_SERVER[REQUEST_URI]);
+
+
+
+7. Fatal error: Can't use function return value in write context in getinfo.php on line 8
+
+Correction: Change line 8
+if (is_object($data) = true) $status = '200 OK';
+into 
+if (is_object($data) == true) $status = '200 OK';
+
+
+
+8. Notice: Use of undefined constant REQUEST_URI - assumed 'REQUEST_URI' in getinfo.php on line 4
+
+Correction: Change line 4
+$ArrayURL = split('/', $_SERVER[REQUEST_URI]);
+into 
+$ArrayURL = split('/', $_SERVER['REQUEST_URI']);
+
+
+
+9. Deprecated: Function split() is deprecated in C:\xampp\htdocs\test\getinfo.php on line 4
+
+Correction: Change line 4, I suggest to use explode or preg_split function instead since 
+the split function has been deprecated as of PHP verion 5.3.0
+
+$ArrayURL = split('/', $_SERVER[REQUEST_URI]);
+into 
+$ArrayURL = explode('/', $_SERVER['REQUEST_URI']);
+
+
+
+10. there is a mistake when assigning value of variabel $id onto $ArrayURL that resulted from explode('/', $_SERVER['REQUEST_URI'])
+
+Correction: Change line 5
+$id = $ArrayURL[1];
+into 
+$id = $ArrayURL[3];
+
+
+
+11. Fatal error: Class 'dataObj' not found in C:\xampp\htdocs\test\getinfo.php on line 6
+because the class name on data.php was 'baseObj' not 'dataObj'
+
+Correction: Change line 6
+$data = new dataObj();
+into 
+$data = new baseObj();
+
+
+
+
